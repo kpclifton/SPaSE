@@ -1,4 +1,4 @@
-name: spase_test
+name: spase
 channels:
   - conda-forge
   - defaults
