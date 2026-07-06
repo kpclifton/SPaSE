@@ -253,12 +253,12 @@ class DataLoader():
                 f'{self.data_folder_path}/King/Fixed_adatas/adata_Sham_1.h5ad')
             adata_Sham_1.var_names_make_unique()
 
-            adata_Sham_2 = sc.read(
-                f'{self.data_folder_path}/King/Fixed_adatas/adata_Sham_2.h5ad')
-            adata_Sham_2.var_names_make_unique()
+            #adata_Sham_2 = sc.read(
+            #    f'{self.data_folder_path}/King/Fixed_adatas/adata_Sham_2.h5ad')
+            #adata_Sham_2.var_names_make_unique()
 
             return {
-                'Sham_1': adata_Sham_1, 'Sham_2': adata_Sham_2, '1hr': adata_1hr, '4hr': adata_4hr, 'D3_1': adata_D3_1, 'D3_3': adata_D3_3, 'D7_2': adata_D7_2, 'D7_3': adata_D7_3
+                'Sham_1': adata_Sham_1, '1hr': adata_1hr, '4hr': adata_4hr, 'D3_1': adata_D3_1, 'D3_3': adata_D3_3, 'D7_2': adata_D7_2, 'D7_3': adata_D7_3
             }
         elif dataset == 'Human_heart':
             adata_control_P1 = sc.read(

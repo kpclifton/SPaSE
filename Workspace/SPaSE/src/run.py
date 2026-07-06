@@ -14,24 +14,88 @@ parser.add_argument('-l', '--lambda_sinkhorn')
 args = parser.parse_args()
 
 
-dataset = args.dataset_name
-adata_left_path = args.healthy
-adata_right_path = args.diseased
+#dataset = args.dataset_name
 
-adata_healthy_right_path = args.healthy_right
+#dataset = 'speKidney'
+dataset = 'speKidney_simRan'
+#dataset = 'rastKidney'
+#dataset = 'test_run'
+#dataset = 'speMERFISH'
+#dataset = 'AKI_Kidney'
+#dataset = 'AKI_Kidney_rast'
+
+#adata_left_path = args.healthy
+#adata_right_path = args.diseased
+
+#adata_left_path = '/home/kalen/SPaSE/Data/speKidney/speKidneyA.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/speKidney/speKidneyB.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/speKidney/speKidneyC.h5ad'
+
+#adata_left_path = '/home/kalen/SPaSE/Data/rastKidney/rastKidneyA.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/rastKidney/rastKidneyB.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/speKidney/rastKidneyC.h5ad'
+
+adata_left_path = '/home/kalen/SPaSE/Data/speKidney/simRanPatternRasts1.h5ad'
+adata_right_path = '/home/kalen/SPaSE/Data/speKidney/simRanPatternRasts2.h5ad'
+
+#adata_left_path = '/home/kalen/SPaSE/Data/King/Fixed_adatas/adata_Sham_1.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/King/Fixed_adatas/adata_D3_1.h5ad'
+
+#adata_left_path = '/home/kalen/SPaSE/Data/speMERFISH/target_S2R2.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/speMERFISH/source_S2R3.h5ad'
+
+#adata_left_path = '/home/kalen/SPaSE/Data/AKI_Kidney/AKI_ctrl_SE.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/AKI_Kidney/AKI_aki_SE.h5ad'
+
+#adata_left_path = '/home/kalen/SPaSE/Data/AKI_Kidney_rast/AKI_ctrl.h5ad'
+#adata_right_path = '/home/kalen/SPaSE/Data/AKI_Kidney_rast/AKI_aki.h5ad'
+
+#adata_healthy_right_path = args.healthy_right
+
+#if adata_healthy_right_path == 'None':
+#    adata_to_be_synthesized_path = args.healthy
+#else:
+#    adata_to_be_synthesized_path = 'None'
+
+#adata_healthy_right_path = adata_left_path
+adata_healthy_right_path = 'None'
 
 if adata_healthy_right_path == 'None':
-    adata_to_be_synthesized_path = args.healthy
+    adata_to_be_synthesized_path = adata_left_path
 else:
     adata_to_be_synthesized_path = 'None'
 
 
-sample_left = adata_left_path.split('/')[-1].split('.')[0]
-sample_right = adata_right_path.split('/')[-1].split('.')[0]
-alpha = float(args.alpha)
-lambda_sinkhorn = float(args.lambda_sinkhorn)
+#sample_left = adata_left_path.split('/')[-1].split('.')[0]
+#sample_right = adata_right_path.split('/')[-1].split('.')[0]
 
+#sample_left = 'A'
+#sample_right = 'B'
+#sample_right = 'C'
 
+sample_left = '1'
+sample_right = '2'
+
+#sample_left = 'Sham_1'
+#sample_right = 'D3_1'
+
+#sample_left = 'target_S2R2'
+#sample_right = 'source_S2R3'
+
+#sample_left = 'AKI_ctrl_SE'
+#sample_right = 'AKI_aki_SE'
+
+#sample_left = 'AKI_ctrl'
+#sample_right = 'AKI_aki'
+
+#alpha = float(args.alpha)
+#lambda_sinkhorn = float(args.lambda_sinkhorn)
+
+#alpha = 0.1
+#lambda_sinkhorn = 0.05
+
+alpha = 0.01
+lambda_sinkhorn = 0.1
 
 sinkhorn = 1
 dissimilarity = 'js'

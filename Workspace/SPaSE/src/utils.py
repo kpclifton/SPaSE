@@ -149,6 +149,29 @@ def paste_pairwise_align_modified(
             np.save(cost_mat_path, M)
         M = nx.from_numpy(M)
 
+#         #insert by Kalen
+#         # --- DIAGNOSTICS & SAFE CONVERSION FOR COST MATRIX ---
+#         #Ensure M is a numpy array on CPU for reliable numeric behavior
+
+#         if isinstance(M, np.ndarray):
+#             M_np = M
+#         else:
+#             try:
+#                 # if M is a backend array or torch tensor, convert to numpy safely
+#                 M_np = np.asarray(M)
+#             except Exception as e:
+#                 import torch
+#                 if isinstance(M, torch.Tensor):
+#                     M_np = M.detach().cpu().numpy()
+#                 else:
+#                     raise
+
+#         print("cost matrix: dtype, shape:", M_np.dtype, M_np.shape)
+#         print("cost matrix stats: min, max, mean, std:", np.nanmin(M_np), np.nanmax(M_np), np.nanmean(M_np), np.nanstd(M_np))
+#         print("any NaN in cost:", np.isnan(M_np).any(), "any Inf in cost:", np.isinf(M_np).any())
+
+# #######
+
         if isinstance(nx,ot.backend.TorchBackend) and use_gpu:
             M = M.cuda()
         
@@ -922,6 +945,8 @@ def remove_all_same_rows_and_cols(grid_idx):
 def get_2hop_adatas(adata):
     n = adata.obs['array_row'].max() + 1
     m = adata.obs['array_col'].max() + 1
+    print(n)
+    print(m)
     barcode_grid = np.empty([n, m], dtype='<U100')
     grid_idx = np.zeros((n, m)) - 1
     spot_rows = adata.obs['array_row']

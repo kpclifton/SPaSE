@@ -153,7 +153,7 @@ class AnalyzeOutput:
         else:
             adata_to_be_synthesized = self.adata_left.copy()
 
-        # adata_healthy_right = 'None'
+        adata_healthy_right = 'None' #fix missing adata_healthy_right by removing # - Kalen Clifton 20260506
         if self.config['adata_healthy_right_path'] == 'None':
             decompose = True
         else:
@@ -275,7 +275,7 @@ class AnalyzeOutput:
 
 
         distances_left, weights_left = compute_null_distribution(pi, cost_mat, 'left')
-        # print('\n\ndistances_left', distances_left.min(), distances_left.max(), '\n\n')
+        #print('\n\ndistances_left', distances_left.min(), distances_left.max(), '\n\n')
         # a_left, loc_left, scale_left = self.distribution.fit(distances_left)
         # print(a_left, loc_left, scale_left)
         
